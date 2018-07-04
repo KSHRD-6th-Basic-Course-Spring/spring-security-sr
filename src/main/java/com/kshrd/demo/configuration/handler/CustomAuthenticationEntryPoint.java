@@ -1,4 +1,4 @@
-package com.kshrd.demo.configuration;
+package com.kshrd.demo.configuration.handler;
 
 import java.io.IOException;
 

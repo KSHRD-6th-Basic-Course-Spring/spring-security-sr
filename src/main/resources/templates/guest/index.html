@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8"/>
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Hello Guest!</h1>
+	<h1 sec:authorize="isAnonymous()">Hello Guest!</h1>
+	<h1 sec:authorize="isAuthenticated()">Hello <span th:text="${#authentication.principal.fullName}"></span></h1>
+	
+	<div sec:authorize="isAuthenticated()" th:text="${#authentication.principal}">
+        The value of the "name" property of the authentication object should appear here.
+    </div>
+    
+    <h1 sec:authorize="hasRole('ROLE_ADMIN')">
+        Admin area...
+    </h1>
+	
 </body>
 </html>
+
+
+
+
